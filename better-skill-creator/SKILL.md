@@ -20,12 +20,19 @@ metadata:
 ## 流程
 
 第 1 步：先读取 `references/skill-triage.md`，判断这个需求是否真的应该做成 skill；如果不应该，明确给出更合适的替代方案。
+
 第 2 步：读取 `references/pattern-selector.md`，先在五种设计模式里选一个主模式；只有在确有必要时才组合次级模式，并保持单一主模式对外路由。
+
 第 3 步：读取 `references/routing-and-loading.md`，写出短而准的 `description`，以及 `SKILL.md` 中的“适用 / 不适用 / 产出 / 反例”。
+
 第 4 步：读取 `references/yaml-head-rules.md`，先组装合法的 YAML 头部，确保 `name`、`description` 和可选字段都符合规范。
+
 第 5 步：读取 `references/package-assembly.md`，决定哪些内容放进 `SKILL.md`，哪些拆到 `references/`、`assets/`、`scripts/`；如果用了组合模式，要把次级模式细节拆到对应步骤再按需加载。
+
 第 6 步：直接创建或更新目标 skill 文件；如果关键上下文缺失，只问最少量、最必要的问题。
+
 第 7 步：读取 `references/review-checklist.md`，对结果做一轮自检；如果发现它其实不该是 skill、模式选错了，或路由描述不清，就继续修正。
+
 
 ## 约束
 
