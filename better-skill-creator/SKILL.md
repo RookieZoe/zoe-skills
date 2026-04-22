@@ -19,29 +19,25 @@ metadata:
 
 ## 流程
 
-第 1 步：先读取 `references/skill-triage.md`，判断这个需求是否真的应该做成 skill；如果不应该，明确给出更合适的替代方案。
-
-第 2 步：读取 `references/pattern-selector.md`，先在五种设计模式里选一个主模式；只有在确有必要时才组合次级模式，并保持单一主模式对外路由。
-
-第 3 步：读取 `references/routing-and-loading.md`，写出短而准的 `description`，以及 `SKILL.md` 中的“适用 / 不适用 / 产出 / 反例”。
-
-第 4 步：读取 `references/yaml-head-rules.md`，先组装合法的 YAML 头部，确保 `name`、`description` 和可选字段都符合规范。
-
-第 5 步：读取 `references/package-assembly.md`，决定哪些内容放进 `SKILL.md`，哪些拆到 `references/`、`assets/`、`scripts/`；如果用了组合模式，要把次级模式细节拆到对应步骤再按需加载。
-
-第 6 步：直接创建或更新目标 skill 文件；如果关键上下文缺失，只问最少量、最必要的问题。
-
-第 7 步：读取 `references/review-checklist.md`，对结果做一轮自检；如果发现它其实不该是 skill、模式选错了，或路由描述不清，就继续修正。
-
+1. 读取 `references/skill-triage.md`，判断这个需求是否真的应该做成 skill；如果不应该，明确给出更合适的替代方案。
+2. 如果用户描述过于简单，或现有信息不足以判断主任务边界、触发条件、反例或产出，读取 `references/question-gathering.md`，按缺失信息做最少量反问收集；优先补齐“主任务 / 触发示例 / 反例 / 产出 / 现有素材”。
+3. 读取 `references/pattern-selector.md`，先在五种设计模式里选一个主模式；只有在确有必要时才组合次级模式，并保持单一主模式对外路由。
+4. 读取 `references/routing-and-loading.md`，写出短而准的 `description`，以及 `SKILL.md` 中的“适用 / 不适用 / 产出 / 反例”。
+5. 读取 `references/yaml-head-rules.md`，先组装合法的 YAML 头部，确保 `name`、`description` 和可选字段都符合规范。
+6. 读取 `references/package-assembly.md`，决定哪些内容放进 `SKILL.md`，哪些拆到 `references/`、`assets/`、`scripts/`；如果用了组合模式，要把次级模式细节拆到对应步骤再按需加载。
+7. 直接创建或更新目标 skill 文件；如果反问后仍缺关键上下文，只继续追问当前步骤真正需要的信息。
+8. 读取 `references/review-checklist.md`，对结果做一轮自检；如果发现它其实不该是 skill、模式选错了，或路由描述不清，就继续修正。
 
 ## 约束
 
 - 先判断“应不应该做成 skill”，再判断“怎么做成 skill”。
+- 如果用户描述过于简单，先做反问收集，再决定主任务、设计模式和路由；不要靠猜测补完整个 skill。
 - 一个 skill 只做一个主任务，并且只声明一个主设计模式。
 - 设计模式可以组合，但组合只能服务于主任务；`metadata.pattern`、`description` 和对外路由仍然必须保持一个清晰主模式。
 - YAML 头部必须合法：`name` 与目录名一致、只用小写字母/数字/连字符；`description` 用自然语言描述触发条件，且不要包含 XML 尖括号。
 - 不要试图“蒸馏一个人”；要沉淀的是可复用的 SOP、约束、资源和输出规则。
 - `description` 必须短、像路由条件，且包含“适用 / 不适用 / 产出”。
+- 反问收集只补当前决策真正缺失的信息，优先问主任务、触发示例、反例、产出和现有素材；不要为了“看起来完整”一次性抛长问卷。
 - `license`、`compatibility`、`allowed-tools`、`metadata` 只在确有价值时才填写；不要为了“看起来完整”而凑字段。
 - `SKILL.md` 只保留路由、流程和约束；详细规则拆到 supporting files。
 - 如果有次级模式，只在对应步骤引用它所需的 `references/` 或 `assets/`；不要把所有模式说明一次性塞进常驻上下文。
